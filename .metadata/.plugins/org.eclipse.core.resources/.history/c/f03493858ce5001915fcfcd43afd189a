@@ -1,0 +1,9 @@
+package leetcode0_50;
+/**
+ * 返回最长公共子串(字符)
+ * @author xx
+ *
+ */
+public class T14 {
+
+}

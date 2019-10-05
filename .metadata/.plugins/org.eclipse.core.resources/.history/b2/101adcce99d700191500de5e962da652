@@ -1,0 +1,144 @@
+package Palindrome_string;
+
+import java.nio.file.spi.FileSystemProvider;
+import java.util.Scanner;
+import java.util.Vector;
+
+public class T3 {
+//	/* 1176 Two ends
+//	题目大意：给出一串偶数个的数字。两个玩家A B分别取从两端取数。
+//	          A可以任意取，B采取贪心方法取大的一端。
+//	          取完数后，个人的数求和。求出A赢B的最多点数。
+//	          
+//	方法：采用动态规划法。
+//	      建立一个倒堆dp二维数组，dp[i][j]记录的A是从第 i
+//	      个取到第j个数后的最大和。
+//	      
+//	      A动态取数的方法：
+//	      1、选择左端，如果剩下的左端大B则选择左端，否
+//	         则选择右端，然后剩下的段再递归  
+//	         求出一个和leftSum
+//	      2、选择右端，B的选择同上。求得一个和rightSum
+//	      然后比较leftSum和rightSum，取大的作为dp[left][right]
+//	      的值并返回。 
+//	*/
+//	 
+//	
+//	public static int dp[][]= {};
+//	public static int a[];
+//	 
+//	public static int fun(int left, int right)
+//	{
+//	  if(left > right)
+//	    return 0;
+//	  if(left == right)
+//	    return dp[left][right];
+//	  if(dp[left][right] != -1)
+//	    return dp[left][right];
+//	  
+//	  //选择左端，如果剩下的左端大则选择左端，否则选择右端，然后剩下的段再递归 
+//	  int leftSum = a[left] + (a[left+1] >= a[right]? fun(left+2, right) : fun(left+1, right-1) );
+//	  //选择右端 
+//	  int rightSum = a[right] +(a[left] >= a[right-1]? fun(left+1, right-1): fun(left, right-2));    
+//	  dp[left][right] = Math.max(leftSum, rightSum);
+//	  return dp[left][right];
+//	}
+//	 
+//	public static void main(String [] args)
+//	{
+//	    int n = 0;
+//	    int turn = 0;
+//	    Scanner input = new Scanner(System.in);
+//	    
+//	    while(true)
+//	    {
+//	    	n=input.nextInt();
+//	      if (n == 0)
+//	      break;     
+//	     // memset(dp,-1,sizeof(dp));
+//	      int Sum =0;
+//	      for(int i=0; i < n; i++)
+//	      {
+//	    	  int b;
+//	    	  b=input.nextInt();
+//	         a[i] = b;
+//	         Sum += a[i];
+//	       }
+//	       int firstSum = fun(0,n-1);
+//	        
+//	       turn++;
+//	       System.out.println(2*firstSum-Sum);
+//	       //cout << "In game " << turn << ", the greedy strategy might lose by as many as "<<2*firstSum-Sum<<" points."<< endl;  
+//	       
+//	    }
+//	    
+//	} 
+//	public static void main(String[] args) {
+//		int MAXN=110;
+//		int N;
+//		int data[];///存放初始值
+//		int sum[];///存放前i个数的和
+//		int gain[][];///从区间[i,j]取数的最大值
+//
+//	    while(cin>>N)
+//	    {
+//	        memset(sum,0,sizeof(sum));
+//	        for(int i=1;i<=N;i++)
+//	        {
+//	            cin>>data[i];
+//	            sum[i]=sum[i-1]+data[i];
+//	            gain[i][i]=data[i];///初始化
+//	        }
+//	        for(int i=N-1;i>0;i--)///动态规划，从小区间扩展到大区间
+//	        {
+//	            for(int j=i;j<=N;j++)
+//	            {
+//	                gain[i][j]=sum[j]-sum[i-1]-min(gain[i+1][j],gain[i][j-1]);
+//	                ///sum[j]-sum[i-1]代表[i,j]区间所有数的和
+//	                ///当前人从[i,j]区间取数，那么下一个人只能从[i+1,j]或者
+//	                ///[i,j-1]区间取数
+//	            }
+//	        }
+//	        cout<<gain[1][N]<<' '<<sum[N]-gain[1][N]<<endl;
+//	    }
+//	    return 0;
+//	}
+	
+	  public static int stoneGame(Vector<Integer> piles) {
+	        int N = piles.size();
+	        // dp[L][R] 表示[L][R] 区间先手最大和后手最大
+	        int [][]dpA = null;
+	        int [][]dpB = null;
+//	        memset(dpA,0,sizeof(dpA));
+//	        memset(dpB,0,sizeof(dpB));
+	        for(int i=0;i<N+1;i++) {
+	        	for(int j=0;j<N+1;j++) {
+	        	dpA[i][j]=0;
+	        	dpB[i][j]=0;
+	        	}
+	        }
+	        for(int l = N-1;l >=0; l--){
+	            dpA[l][l] = piles.elementAt(l);
+	            for(int r=l+1;r<N;r++){
+	                dpA[l][r] = Math.max(dpB[l+1][r] + piles.elementAt(l),dpB[l][r-1] + piles.elementAt(r));
+	                dpB[l][r] = Math.min(dpA[l+1][r],dpA[l][r-1]);
+	            }
+	        }
+	        //return dpA[0][N-1] > dpB[0][N-1]?true:false;
+	        return dpA[0][N-1];
+	    }
+	public static void main(String [] args) {   
+		Vector<Integer> vector = new Vector<>();
+		Scanner input = new Scanner(System.in);
+		int n = input.nextInt();  
+		for(int i=0 ;i<n;i++)
+		{
+			int e = input.nextInt();
+			vector.add(e);
+		}
+		int sum = stoneGame(vector);
+		System.out.println(sum);
+		
+	}
+
+}

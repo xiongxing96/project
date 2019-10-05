@@ -1,0 +1,36 @@
+package Palindrome_string;
+
+public class Solution3 {
+    public static String change(String str){
+        String s = "";
+        if(str.length() == 0 || str == null)
+            return s;
+        int j=0;
+        for(int i = 0;i <= str.length() - 1; i++){
+            char c = str.charAt(i);
+            if( (c >= 0 && c <= 9) || (c >='a' && c <= 'z') ||(c >= 'A' && c <= 'Z')){
+               s+=c; 
+            }
+            s.toLowerCase();
+        }
+        return s;
+    }
+    public static boolean judge(String str){
+        int l = 0, r = str.length()-1;
+        while(l < r){ 
+            if(str.charAt(l++) != str.charAt(r--))
+                return false;
+        } 
+        return true;
+    }
+    public static boolean isPalindrome(String s) {
+        String str = change(s);
+        if (str.length()<=1)return true;
+        return  judge(str);
+    }
+    public static void main(String[] args) {
+    	String s = "abc,cba";
+    	String b = "aNccn,A"
+    	System.out.println(isPalindrome(s));
+    } 
+}

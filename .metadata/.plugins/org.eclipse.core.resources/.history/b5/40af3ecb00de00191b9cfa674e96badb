@@ -1,0 +1,42 @@
+package test;
+/**
+ * 秦九韶迭代法   
+ * Horner迭代法
+ * 至多只需作n次加法和n次乘法
+ * 迭代公式：poly=poly*x+arr[i]
+ * @author xx
+ *
+ */
+public class Honor {
+	public int valueOfPolynomial(String s) {
+		int len = s.length();
+		int x=1;
+		int dex =0,temp=0;
+		int []num = new int[1000];
+		
+		for(int i=0;i<len;i++) {
+			if(s.charAt(i)>='0' && s.charAt(i) <= '9') {
+				temp = s.charAt(i)-'0';
+			}else if (s.charAt(i)=='+') {
+				temp = 0;
+				continue;
+			}else if(s.charAt(i) == '^') {
+				x = temp;
+				continue;
+			}else {
+				num[dex++] =temp;//储存系数poly
+				temp = 0;
+			}
+		}
+		
+		temp = num[0];
+		for(int i=1;i<dex;i++) {
+			System.out.println(num[i]);
+			temp=temp*x+num[i];
+		}
+		return temp;
+	}
+	public static void main(String[] args) {
+		System.out.println(new Horner().valueOfPolynomial("4*3^3+5*3^2+6*3^1+7*3^0"));
+	}
+}

@@ -1,0 +1,67 @@
+package Palindrome_string;
+
+import org.omg.CORBA.PRIVATE_MEMBER;
+
+public class Test {
+//	public static void main(String [] args) {
+//		System.out.println(new StringBuffer("gjsgjd").reverse().toString());//翻转方法StringBuffer(String s).reverse
+//		System.out.println(new StringBuffer("aassssdf").reverse().toString().equals("ss"));//直接方法判断
+//		System.out.println(isParindrom("ada"));
+//		System.out.println(findPalindrome("caaddaac",0,7));
+//		
+//	}
+//	//判断是否回文数
+//	private static boolean isParindrom(String s) {
+//		if(s == null)
+//			return false;
+//		int l = 0;
+//		int r = s.length()-1;
+//		while(l < r) {
+//			if(s.charAt(l++) != s.charAt(r--))
+//				return false;		
+//		}
+//		return true;
+//	}
+//	public static String findPalindrome(String s, int left, int right) {  
+//        int n = s.length();  
+//        int l = left;  
+//        int r = right;  
+//        while (l >= 0 && r <= n - 1 && s.charAt(l) == s.charAt(r)) {  
+//            l--;  
+//            r++;  
+//        }  
+//        return s.substring(l + 1, r);  
+//    }  
+	/**
+	 * 给定的n是有效的
+	 * 删除链表的倒数第N个节点
+	 * @author xx
+	 *
+	 */
+	class Node{
+		public int value;
+		public Node next;
+	}
+	public Node delete(Node head,int n) {
+		 	Node right = head;
+	        Node left = head;
+	        for (int i = 0; i < n; i++) {
+	            right = right.next;
+	        }
+
+	        if (right == null) {
+	            head = head.next;
+	            return head;
+	        }
+	        while (right.next != null) {
+	            left = left.next;
+	            right = right.next;
+	        }
+	        left.next = left.next.next;
+	        return head;
+	}
+	public static void main(String[] args) {
+		String classFile = "Com.tigerbrokers".replaceAll(".", "/")+"MyClass.class";
+		System.out.print(classFile);
+	} 
+}

@@ -1,0 +1,9 @@
+package string;
+
+public class Test {
+	public static void main(String [] args) {
+		System.out.println(new StringBuffer(gjsgjd).reverse().toString());
+		System.out.println(new StringBuffer("aassssdf").reverse().toString().equals("ss"));
+		
+	}
+}

@@ -1,0 +1,40 @@
+package leetcode0_50;
+/**
+ * 
+ * @author xx
+ *
+ */
+public class T8 {
+	public long myAntoi(String str) {
+		str = str.trim();
+		int flag = 1;
+		long res = 0;
+		String s = "";
+		int i = 0;
+		if("-".equals(str.indexOf(0))) {
+			flag = -1;
+			i++;
+		}
+		while(i < str.length()-1) {
+			if(str.charAt(i) <= 9 && str.charAt(i) >= 0) {
+				res = res*10+ Integer.valueOf(str.charAt(i));
+				s+=str.charAt(i);
+				i++;
+			}else {
+				break;
+			}
+		}
+		//if(i==0)return 0;
+		if(flag==-1) res/=-1;
+		if(res > Integer.MAX_VALUE ) {
+			return Integer.MAX_VALUE;
+		}
+		if(res < Integer.MIN_VALUE) {
+			return Integer.MIN_VALUE;
+		}
+		return res;
+	}
+	public static void main(String[] args) {
+		System.out.println(new T8().myAntoi("123rrr"));
+	}
+}

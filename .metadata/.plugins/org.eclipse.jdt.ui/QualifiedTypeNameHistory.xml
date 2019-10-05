@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="com.mysql.cj.xdevapi.Result"/>
+<fullyQualifiedTypeName name="com.test.dao.UserDao"/>
+<fullyQualifiedTypeName name="com.ndktools.javamd5.Mademd5"/>
+<fullyQualifiedTypeName name="com.ndktools.javamd5.core.MD5"/>
+<fullyQualifiedTypeName name="com.test.util.DBUtil"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="javax.servlet.jsp.tagext.IterationTag"/>
+<fullyQualifiedTypeName name="java.beans.DefaultPersistenceDelegate"/>
+<fullyQualifiedTypeName name="Palindrome_string.Test.Node"/>
+<fullyQualifiedTypeName name="leetcode02.T9"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.PriorityQueue"/>
+<fullyQualifiedTypeName name="java.util.Comparator"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="leetcode0_50.T7"/>
+<fullyQualifiedTypeName name="javax.print.attribute.standard.RequestingUserName"/>
+<fullyQualifiedTypeName name="leetcode0_50.T8"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+</qualifiedTypeNameHistroy>

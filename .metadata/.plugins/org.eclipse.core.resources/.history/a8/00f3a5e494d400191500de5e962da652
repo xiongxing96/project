@@ -1,0 +1,35 @@
+package Palindrome_string;
+
+import org.omg.CORBA.PRIVATE_MEMBER;
+
+public class Test {
+	public static void main(String [] args) {
+		System.out.println(new StringBuffer("gjsgjd").reverse().toString());//翻转方法StringBuffer(String s).reverse
+		System.out.println(new StringBuffer("aassssdf").reverse().toString().equals("ss"));//直接方法判断
+		System.out.println(isParindrom("ada"));
+		System.out.println(findPalindrome("aaddac",1,4));
+		
+	}
+	//判断是否回文数
+	private static boolean isParindrom(String s) {
+		if(s == null)
+			return false;
+		int l = 0;
+		int r = s.length()-1;
+		while(l < r) {
+			if(s.charAt(l++) != s.charAt(r--))
+				return false;		
+		}
+		return true;
+	}
+	public static String findPalindrome(String s, int left, int right) {  
+        int n = s.length();  
+        int l = left;  
+        int r = right;  
+        while (l >= 0 && r <= n - 1 && s.charAt(l) == s.charAt(r)) {  
+            l--;  
+            r++;  
+        }  
+        return s.substring(l + 1, r);  
+    }  
+}

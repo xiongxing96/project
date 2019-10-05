@@ -1,0 +1,25 @@
+package string;
+
+import org.omg.CORBA.PRIVATE_MEMBER;
+
+public class Test {
+	public static void main(String [] args) {
+		System.out.println(new StringBuffer("gjsgjd").reverse().toString());
+		System.out.println(new StringBuffer("aassssdf").reverse().toString().equals("ss"));
+		System.out.println(isParindrom("ddffgg"));
+		
+	}
+	private static boolean isParindrom(String s) {
+		if(s == null)
+			return false;
+		else {
+			int l = 0;
+			int r = s.length()-1;
+			while(l < r) {
+				if(s.charAt(l++) != s.charAt(r--))
+					return false;		
+			}
+		return true;
+		}
+	}
+}

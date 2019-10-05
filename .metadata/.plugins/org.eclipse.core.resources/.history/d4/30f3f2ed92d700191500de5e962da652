@@ -1,0 +1,75 @@
+package Palindrome_string;
+
+import java.util.Scanner;
+
+public class T3 {
+	/* 1176 Two ends
+	题目大意：给出一串偶数个的数字。两个玩家A B分别取从两端取数。
+	          A可以任意取，B采取贪心方法取大的一端。
+	          取完数后，个人的数求和。求出A赢B的最多点数。
+	          
+	方法：采用动态规划法。
+	      建立一个倒堆dp二维数组，dp[i][j]记录的A是从第 i
+	      个取到第j个数后的最大和。
+	      
+	      A动态取数的方法：
+	      1、选择左端，如果剩下的左端大B则选择左端，否
+	         则选择右端，然后剩下的段再递归  
+	         求出一个和leftSum
+	      2、选择右端，B的选择同上。求得一个和rightSum
+	      然后比较leftSum和rightSum，取大的作为dp[left][right]
+	      的值并返回。 
+	*/
+	 
+	
+	public int dp[1001][1001];
+	public int a[1001];
+	 
+	public int fun(int left, int right)
+	{
+	  if(left > right)
+	    return 0;
+	  if(left == right)
+	    return dp[left][right];
+	  if(dp[left][right] != -1)
+	    return dp[left][right];
+	  
+	  //选择左端，如果剩下的左端大则选择左端，否则选择右端，然后剩下的段再递归 
+	  int leftSum = a[left] + (a[left+1] >= a[right]? fun(left+2, right) : fun(left+1, right-1) );
+	  //选择右端 
+	  int rightSum = a[right] +(a[left] >= a[right-1]? fun(left+1, right-1): fun(left, right-2));    
+	  dp[left][right] = max(leftSum, rightSum);
+	  return dp[left][right];
+	}
+	 
+	public static void main(String [] args)
+	{
+	    int n = 0;
+	    int turn = 0;
+	    Scanner input = new Scanner(System.in);
+	    
+	    while(true)
+	    {
+	    	n=input.nextInt();
+	      if (n == 0)
+	      break;     
+	      memset(dp,-1,sizeof(dp));
+	      int Sum =0;
+	      for(int i=0; i < n; i++)
+	      {
+	    	  int b;
+	    	  b=input.nextInt();
+	         a[i] = b;
+	         Sum += a[i];
+	       }
+	       int firstSum = fun(0,n-1);
+	        
+	       turn++;
+	       cout << "In game " << turn << ", the greedy strategy might lose by as many as "<<2*firstSum-Sum<<" points."<< endl;  
+	       
+	    }
+	    
+	 
+	    return 0;   
+	}                                 
+}

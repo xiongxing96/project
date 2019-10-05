@@ -1,0 +1,72 @@
+package string;
+
+import java.util.ArrayList;
+
+/**
+ * Q:给定一个字符串s，分割s使得s的每一个子串都是回文串  例如:给定字符串s="aab",返回所有的回文分割结果 
+ * @author xx
+ *
+ */
+public class Solution {
+	ArrayList results;
+	public ArrayList<ArrayList<String>> partition(String s) {
+		        results = new ArrayList<ArrayList<String>>();
+		        boolean[] cut = new boolean[s.length()];
+		        find(s,0,cut);
+		        return results;
+		    }
+
+		    private void find(String s,int index,boolean[] cut){
+
+		        if(index == s.length()){
+		            ArrayList<String> temp = new ArrayList<String>();
+		            int begin = 0,last = 0;
+		            while(last < s.length()){
+		                if(cut[last]){
+		                    temp.add(s.substring(begin,last+1));
+		                    begin = last+1;
+		                }
+		                last++;
+		            }
+		            results.add(temp);
+
+		        }
+		        //向右找回文字符串。
+		        for(int i=index;i<s.length();i++){
+		            if(isPalindrome(s,index,i)){
+		                cut[i] = true;
+		                /*
+		                System.out.println("进入下一层");                
+		                System.out.println("index:"+index+";i:"+i);
+		                System.out.println("cut:"+cut[0]+","+cut[1]+","+cut[2]);
+		                */
+		                find(s,i+1,cut);
+		                cut[i]=false;
+		                /*
+		                System.out.println("返回上一层");                
+		                System.out.println("index:"+index+";i:"+i);
+		                System.out.println("cut:"+cut[0]+","+cut[1]+","+cut[2]);
+		                */
+		            }
+		        }
+		    }
+
+
+		    //判断是否为回文字符串
+		    private boolean isPalindrome(String s,int begin,int last){
+		        while(begin < last && s.charAt(begin) == s.charAt(last)){
+		            begin++;
+		            last--;
+		        }
+		        return begin >= last;
+		    }
+		}
+		————————————————
+		版权声明：本文为CSDN博主「whd_Alive」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+		原文链接：https://blog.csdn.net/whdAlive/article/details/81254975
+		
+	public static void main(String[] args) {
+		Solution solution = new Solution();
+		//solution.partition(s);
+	}
+}

@@ -1,0 +1,34 @@
+package leetcode02;
+
+import java.util.*;
+
+
+/**
+ * 最长不重复 子串序列
+ * @author xx
+ *
+ */
+
+/*
+ * 暴力法
+ */
+public class LongestSub {
+	public static int lengthOfLongestSubstring(String s) {
+		int len = 0;
+		int maxlen = 0;
+		String str = "";
+		Queue<String> queue = new LinkedList<String>();
+		for(int i=0;i<s.length();i++){
+			
+		}
+		return 0;
+	}
+	
+//	public boolean isUniq(String s, int start,int end) {
+//		for(int i=0;i<s.length();i++)
+//		{
+//			
+//		}
+//	return true;	
+//	}
+}

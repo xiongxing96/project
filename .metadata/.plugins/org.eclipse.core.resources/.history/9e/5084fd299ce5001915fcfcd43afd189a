@@ -1,0 +1,25 @@
+package leetcode0_50;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * 三数之和
+ * 从时间复杂度n(2)->n(2)
+ * @author xx
+ *
+ */
+public class T15 {
+	public static List<List<Integer>> threeSum(int[] nums) {
+		List<List<Integer>> ans = new ArrayList<>();
+		int len = nums.length;
+		if(len < 3 || nums==null)return ans;
+		Arrays.sort(nums);// O(n log(n)) 
+		for(int i=0;i<len;i++) {
+			
+		}
+		return ans;
+	}
+}

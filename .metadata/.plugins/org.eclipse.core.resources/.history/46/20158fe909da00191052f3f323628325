@@ -1,0 +1,45 @@
+package leetcode02;
+
+import java.beans.DefaultPersistenceDelegate;
+import java.util.*;
+
+
+/**
+ * 最长不重复 子串序列
+ * @author xx
+ *
+ */
+
+
+/*
+ * 暴力法
+ */
+public class LongestSub {
+	public static Queue<Character> delet(Queue q, char c) {
+		while((char)q.poll() != c) {
+		}
+		return q;
+	}
+	public static int lengthOfLongestSubstring(String s) {
+		int len = 0;
+		int maxlen = 0;
+		String str = "";
+		Queue<Character> queue = new LinkedList<Character>();
+		for(int i=0;i<s.length();i++){
+			if(queue.contains(s.charAt(i))){
+				if(queue.size() > maxlen) {
+					maxlen = queue.size();
+				}
+				queue = delet(queue,s.charAt(i));
+			}
+			queue.add(s.charAt(i));
+			
+		}
+		return maxlen;
+	}
+	public static void main(String[] args) {
+		System.out.println(lengthOfLongestSubstring("agdfass"));
+	}
+}
+	
+

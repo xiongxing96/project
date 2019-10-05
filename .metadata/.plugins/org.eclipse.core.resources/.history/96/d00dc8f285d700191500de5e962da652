@@ -1,0 +1,47 @@
+package Palindrome_string;
+	/**
+	 * 给定一个字符串 s，找到 s中最长的回文子串。你可以假设 s 的最大长度为1000。
+	 * @author xx
+	 *
+	 */
+public class Solution2 {//改为从中心出发寻找回文，降低复杂度
+	//左右扩展回文串，返回最长子串
+	public String findPalindrome(String s, int left, int right) {  
+        int n = s.length();  
+        int l = left;  
+        int r = right;  
+        while (l >= 0 && r <= n - 1 && s.charAt(l) == s.charAt(r)) {  //不能把结果置于判断条件中，会混乱最终结果
+            l--;  
+            r++;  
+        }  
+        return s.substring(l + 1, r);  //substring(begin,end)函数，首字母为0， 从begin开始至end前一个
+    }  
+	//寻找最长回文子串函数
+    public String longestPalindrome(String s) {  
+        int n = s.length();  
+        if (n<=1) return s;  
+  
+        String longest = "";  
+  
+        String str; 
+        for (int i=0; i<n-1; i++) { 
+        	//奇数个回文
+            str = findPalindrome(s, i, i);  
+            if (str.length() > longest.length()){  
+                longest = str;  
+            }  
+            //偶数个回文
+            str = findPalindrome(s, i, i + 1);  
+            if (str.length() > longest.length()){  
+                longest = str;  
+            }  
+        }  
+        return longest;  
+    }  
+    //main函数
+    public static void main(String[] args) {
+    	Solution2 so = new Solution2();
+    	System.out.println(so.longestPalindrome("abb"));
+    	System.out.println("afhgsgdjk".substring(1,3));
+    }
+}

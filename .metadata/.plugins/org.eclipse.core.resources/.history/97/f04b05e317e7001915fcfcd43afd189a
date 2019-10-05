@@ -1,0 +1,27 @@
+package leetcode0_50;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * 你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+ * O(1)
+ * @author xx
+ *
+ */
+public class T26 {
+	 public int removeDuplicates(int[] nums) {
+		 Set<String> nums_set = new HashSet<>();
+		 for(int num:nums) {
+			 nums_set.add(num+"");
+		 }
+		 String[] a = new String[nums_set.size()];
+		 nums_set.toArray(a);
+		 return nums_set.size();
+		
+	 }
+	 public static void main(String []args) {
+		 int []nums = {0,0,1,1,1,2,2,3,3,4};
+		 System.out.println(new T26().removeDuplicates(nums));
+	 }
+}

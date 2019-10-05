@@ -1,0 +1,12 @@
+package leetcode0_50;
+
+public class T8 {
+	public String myAntoi(String str) {
+		str = str.trim();
+		
+		return str;
+	}
+	public static void main(String[] args) {
+		System.out.println(new T8().myAntoi("   -123 rrr"));
+	}
+}

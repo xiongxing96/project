@@ -1,0 +1,44 @@
+package leetcode0_50;
+
+
+import java.util.Arrays;
+
+/**
+ * 寻找两个数组的中位数
+ * 要求O(log(m+n))
+ * 一般看到log 基本都是二分法
+ * @author xx
+ * 
+ */
+public class T4 {
+	public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+		//合并两个整形数组
+		if(nums1.length==0 && nums2.length==0)return 0;
+		if(nums1.length==0)return (nums2.length%2==0?(nums2[nums2.length/2]+nums2[nums2.length/2+1])/2.0:nums2[nums2.length/2]);
+		if(nums2.length==0)return (nums1.length%2==0?(nums1[nums1.length/2]+nums1[nums1.length/2+1])/2.0:nums1[nums1.length/2]);
+		
+		int []nums3 = new int[nums1.length+nums2.length]; 
+		System.arraycopy(nums1, 0, nums3, 0, nums1.length);
+		System.arraycopy(nums2, 0, nums3, nums1.length, nums2.length); 
+		Arrays.sort(nums3);//排序
+		int len = nums3.length;
+		System.out.println(len);
+		for(int num:nums3) {
+			System.out.print(num);
+		}
+		if(len%2==0)
+			return (nums3[len/2]+nums3[len/2+1])/2.0;
+		else
+			return nums3[len/2];
+		
+		//return 0; 
+	}
+	public static void main	( String[] args) {
+		int [] nums1 = {7,8};
+		int [] nums2 = {1,2,3,4,5};
+		System.out.println(nums1.length);
+		System.out.println(nums2.length);
+		
+		System.out.print(new T4().findMedianSortedArrays(nums1, nums2));
+	}
+}

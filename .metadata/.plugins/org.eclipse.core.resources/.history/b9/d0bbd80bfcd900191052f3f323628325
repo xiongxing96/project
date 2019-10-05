@@ -1,0 +1,28 @@
+package leetcode02;
+
+public class LongestSub {
+	public static int lengthOfLongestSubstring(String s) {
+		int maxlen = 0;
+		int len ;
+		int j=0;
+		String str = "";
+		while(j < s.length()) {
+			len = 0;
+			for(int i = j; i < s.length(); i ++) {
+				if(str.contains(s.valueOf(i))) {
+					str += s.charAt(i);
+					len++;
+					System.out.println(len);
+				}else {
+					maxlen = len;
+					break;
+				}
+			}
+			j++;
+		}
+		return maxlen;
+	} 
+	public static void main(String[] args) {
+		System.out.print(lengthOfLongestSubstring("sdghjgsd"));
+	}
+}

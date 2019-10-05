@@ -1,0 +1,47 @@
+package string;
+
+import java.util.*;
+
+/**
+ * Q:给定一个字符串s，分割s使得s的每一个子串都是回文串  例如:给定字符串s="aab",返回所有的回文分割结果 
+ * @author xx
+ *
+ */		
+
+	public class Solution {
+	public ArrayList<ArrayList<String>> partition(String s) {
+		 ArrayList<ArrayList<String>> res = new ArrayList<>();
+		 help(res,new ArrayList<String>(),s);
+		 return res;
+	}
+	private void help(ArrayList<ArrayList<String>> res, ArrayList<String> temp, String s) {
+		if (s.length() == 0) {
+			res.add(new ArrayList<>(temp));
+			return;
+		}
+		for (int i = 1; i <= s.length(); i++) {
+			String t = s.substring(0, i);
+			if (isPalindrome(t)) {
+				temp.add(t);
+				help(res, temp, s.substring(i));
+				temp.remove(temp.size() - 1);
+			}
+		}
+	}
+
+	private boolean isPalindrome(String t) {
+		return new StringBuilder(t).reverse().toString().equals(t);
+	}
+
+	public static void main(String[] args) {
+		Solution solution = new Solution();
+		ArrayList arrayList = new ArrayList<>();
+		arrayList = solution.partition("aab");
+		if(arrayList.size()!=0) {
+			System.out.println("[");
+		for(int i=0;i<arrayList.size();i++)
+			{System.out.println(arrayList.get(i));}
+		System.out.println("]");
+		}
+	}
+}

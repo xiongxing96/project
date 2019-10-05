@@ -1,0 +1,9 @@
+package leetcode0_50;
+/**
+ * 二分法查找元素起始和终点下标
+ * @author xx
+ *
+ */
+public class T34 {
+
+}

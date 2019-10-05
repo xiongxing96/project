@@ -1,0 +1,86 @@
+<<<<<<< HEAD
+package leetcode0_50;
+=======
+package Palindrome_string;
+>>>>>>> new commit
+
+import java.util.*;
+
+/**
+<<<<<<< HEAD
+ * java实现两端取数
+ * @author xx
+ *
+ */
+public class Solution {
+	public final static int MAXN = 10;
+	public static int N;
+	public static int [] data = new int[MAXN];
+	public static int [] sum = new int[MAXN];
+	public static int [][] gain = new int [MAXN][MAXN];
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		int n = input.nextInt();
+		input.close();
+		N = n;
+		int t=0;
+		while(n!=0) {
+			data[t++] = input.nextInt();
+			sum[t] = sum[t-1]+data[t];
+			gain[t][t] = data[t];
+			n--;
+			t++;
+		}
+		for(int i = N-1; i > 0; i--)
+		for(int j = i; j <= N; j++ ) {
+			gain[1][N] = sum[j]-sum[i-1]-Math.min(gain[i+1][j], gain[i][j-1]);
+		}
+		System.out.println(gain[1][N]);
+		System.out.println(sum[N]-gain[1][N]);
+=======
+ * Q:给定一个字符串s，分割s使得s的每一个子串都是回文串  例如:给定字符串s="aab",返回所有的回文分割结果 
+ * @author xx
+ * S:回溯法（递归算法）
+ */		
+	//使用嵌套ArrayList结构，存储回文字符串
+	public class Solution {
+	public ArrayList<ArrayList<String>> partition(String s) {
+		 ArrayList<ArrayList<String>> res = new ArrayList<>();
+		 fun(res,new ArrayList<String>(),s);
+		 return res;
+	}
+	
+	private void fun(ArrayList<ArrayList<String>> res, ArrayList<String> temp, String s) {
+		if (s.length() == 0) {
+			res.add(new ArrayList<>(temp));
+			return;
+		}
+		for (int i = 1; i <= s.length(); i++) {
+			String t = s.substring(0, i);//截取字符串 前半截
+			if (isPalindrome(t)) {
+				temp.add(t);
+				fun(res, temp, s.substring(i));//后半截继续递归
+				temp.remove(temp.size() - 1 );
+			}
+		}
+	}
+	//判断是否回文
+	private boolean isPalindrome(String t) {
+		return new StringBuilder(t).reverse().toString().equals(t);
+	}
+
+	public static void main(String[] args) {
+		Solution solution = new Solution();
+		ArrayList arrayList = new ArrayList<>();
+		arrayList = solution.partition("aabfbccaca");
+		if(arrayList.size()!=0) {
+			System.out.println("[");
+			
+		for(int i=0;i<arrayList.size();i++)
+			{System.out.println(arrayList.get(i));}
+		
+			System.out.println("]");
+		}
+>>>>>>> new commit
+	}
+}

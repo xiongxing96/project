@@ -1,0 +1,24 @@
+package leetcode0_50;
+/**
+ * 寻找两个数组的中位数
+ * 要求O(log(m+n))
+ * 一般看到log 基本都是二分法
+ * @author xx
+ * 
+ */
+public class T4 {
+	public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+		int []nums3 = new int[nums1.length+nums2.length+1]; 
+		System.arraycopy(nums1, 0, nums3, 0, nums1.length);
+		System.arraycopy(nums2, 0, nums3, nums1.length, nums2.length); 
+		for(int num:nums3) {
+			System.out.print(num);
+		}
+		return 0; 
+	}
+	public static void main	( String[] args) {
+		int [] nums1 = {1,2,3,5,6};
+		int [] nums2 = {3,4,5,6,7};
+		System.out.print(new T4().findMedianSortedArrays(nums1, nums2));
+	}
+}
